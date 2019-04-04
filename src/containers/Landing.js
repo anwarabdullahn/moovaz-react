@@ -28,10 +28,20 @@ class Landing extends Component {
 		this.toggle();
 	};
 
+	upVoteHandle = (id) => {
+		const { topics } = this.state,
+			findTopic = topics.findIndex((topic) => topic.id === id);
+		const upVoteTopic = topics.filter((topic) => topic.id === id);
+		upVoteTopic[0].upvote += 1;
+		topics.splice(findTopic, 1, upVoteTopic[0]);
+		this.setState({ topics: topics });
+		console.log('topics', topics);
+	};
+
 	render() {
 		return (
 			<div className="mt-5 mx-3">
-				<Topic topics={this.state.topics} addHandle={this.toggle} />
+				<Topic topics={this.state.topics} addHandle={this.toggle} upVoteHandle={this.upVoteHandle} />
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
 					<ModalHeader toggle={this.toggle}>Topic title</ModalHeader>
 					<ModalBody>

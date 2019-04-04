@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardText, CardBody, Row, Col } from 'reactstrap';
 
 const Topic = (props) => {
-    console.log('props', props);
+	console.log('props', props);
 
 	const addTopic = (
 		<Col className="my-3" lg={3} md={3} sm={6} onClick={props.addHandle}>
@@ -30,7 +30,11 @@ const Topic = (props) => {
 				<CardBody>
 					<h4 className="text-center">{topic.title}</h4>
 					<CardText className="d-flex mt-5">
-						<span className="ml-auto" style={{ position: 'relative', right: '50px' }}>
+						<span
+							className="ml-auto"
+							style={{ position: 'relative', right: '50px' }}
+							onClick={() => props.upVoteHandle(topic.id)}
+						>
 							<i className="fas fa-2x fa-thumbs-up" style={{ color: 'green' }} /> {topic.upvote}
 						</span>
 						<span className="mr-auto" style={{ position: 'relative', left: '50px' }}>
