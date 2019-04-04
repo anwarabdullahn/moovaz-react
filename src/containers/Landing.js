@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Topic from '../components/Topic';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Form } from 'reactstrap';
 import uuidv4 from 'uuid/v4';
 
 class Landing extends Component {
@@ -20,7 +20,8 @@ class Landing extends Component {
 
 	changeHandle = (e) => this.setState({ [e.target.name]: e.target.value });
 
-	submitHandle = () => {
+	submitHandle = (e) => {
+		e.preventDefault();
 		const { title, topics } = this.state,
 			data = { id: uuidv4(), title, upvote: 0, downvote: 0 };
 		this.setState({ topics: [ ...topics, data ], title: '' });
@@ -56,18 +57,25 @@ class Landing extends Component {
 					downVoteHandle={this.downVoteHandle}
 				/>
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-					<ModalHeader toggle={this.toggle}>Topic title</ModalHeader>
-					<ModalBody>
-						<Input placeholder="title" value={this.state.title} name="title" onChange={this.changeHandle} />
-					</ModalBody>
-					<ModalFooter>
-						<Button color="primary" onClick={this.submitHandle}>
-							Add Topic
-						</Button>
-						<Button color="secondary" onClick={this.toggle}>
-							Cancel
-						</Button>
-					</ModalFooter>
+					<Form onSubmit={this.submitHandle}>
+						<ModalHeader toggle={this.toggle}>Topic title</ModalHeader>
+						<ModalBody>
+							<Input
+								placeholder="title"
+								value={this.state.title}
+								name="title"
+								onChange={this.changeHandle}
+							/>
+						</ModalBody>
+						<ModalFooter>
+							<Button color="primary" type="submit">
+								Add Topic
+							</Button>
+							<Button color="secondary" onClick={this.toggle}>
+								Cancel
+							</Button>
+						</ModalFooter>
+					</Form>
 				</Modal>
 			</div>
 		);
