@@ -1,12 +1,11 @@
 import React from 'react';
-import { Card, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap';
-import { relative } from 'path';
+import { Card, CardText, CardBody, Row, Col } from 'reactstrap';
 
 const Topic = (props) => {
-	console.log(props);
+    console.log('props', props);
 
 	const addTopic = (
-		<Col className="my-3" lg={3} md={3} sm={6}>
+		<Col className="my-3" lg={3} md={3} sm={6} onClick={props.addHandle}>
 			<Card
 				style={{
 					borderStyle: 'dashed',
