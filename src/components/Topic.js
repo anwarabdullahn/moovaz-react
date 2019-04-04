@@ -37,7 +37,11 @@ const Topic = (props) => {
 						>
 							<i className="fas fa-2x fa-thumbs-up" style={{ color: 'green' }} /> {topic.upvote}
 						</span>
-						<span className="mr-auto" style={{ position: 'relative', left: '50px' }}>
+						<span
+							className="mr-auto"
+							style={{ position: 'relative', left: '50px' }}
+							onClick={() => props.downVoteHandle(topic.id)}
+						>
 							<i className="fas fa-2x fa-thumbs-down" style={{ color: 'red' }} /> {topic.downvote}
 						</span>
 					</CardText>
