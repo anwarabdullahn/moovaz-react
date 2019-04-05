@@ -41,7 +41,11 @@ class Landing extends Component {
 		e.preventDefault();
 		const { title } = this.state,
 			data = { id: uuidv4(), title, upvote: 0, downvote: 0 };
-		title.length < 255 ? this.props.storeTopic(data) : this.setState({ msg: 'Max Title Length is 255' });
+		title.length < 255
+			? this.props.storeTopic(data)
+			: this.setState({ msg: 'Max Title Length is 255' }, () =>
+					setTimeout(() => this.setState({ msg: '' }), 5000)
+				);
 		this.setState({ title: '' });
 		this.toggle();
 	};
@@ -60,7 +64,16 @@ class Landing extends Component {
 		return (
 			<div className="mt-3 mx-3">
 				{msg && (
-					<Row>
+					<Row
+						style={{
+							position: 'fixed',
+							bottom: '10px',
+							left: '10px',
+							right: '10px',
+							width: '100%',
+							zIndex: '9999'
+						}}
+					>
 						<Col>
 							<UncontrolledAlert color={success ? 'info' : 'danger'}>{msg}</UncontrolledAlert>
 						</Col>
