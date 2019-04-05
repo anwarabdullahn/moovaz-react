@@ -17,7 +17,7 @@ export default function(state = initialState, action) {
 		case STORE_TOPIC:
 			return {
 				...state,
-				topic: action.payload,
+				topics: action.payload,
 				msg: 'New Topic Added'
 			};
 		default:

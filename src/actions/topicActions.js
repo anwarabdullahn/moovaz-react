@@ -14,7 +14,7 @@ export const storeTopic = (data) => (dispatch) => {
 	sessionStorage.setItem('topics', JSON.stringify(addTopic));
 	dispatch({
 		type: STORE_TOPIC,
-		payload: data
+		payload: addTopic
 	});
 };
 
@@ -27,7 +27,7 @@ export const upVoteTopic = (id) => (dispatch) => {
 	sessionStorage.setItem('topics', JSON.stringify(topics));
 	dispatch({
 		type: UPVOTE_TOPIC,
-		payload: upVoteTopic[0]
+		payload: topics
 	});
 };
 
@@ -40,6 +40,6 @@ export const downVoteTopic = (id) => (dispatch) => {
 	sessionStorage.setItem('topics', JSON.stringify(topics));
 	dispatch({
 		type: DOWNVOTE_TOPIC,
-		payload: downVoteTopic[0]
+		payload: topics
 	});
 };

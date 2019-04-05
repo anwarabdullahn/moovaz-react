@@ -19,7 +19,6 @@ class Landing extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		console.log('nextProps', nextProps);
-		// this.props.getTopics();
 	}
 	toggle = () => this.setState({ modal: !this.state.modal });
 
