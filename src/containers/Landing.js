@@ -21,7 +21,8 @@ class Landing extends Component {
 		super();
 		this.state = {
 			modal: false,
-			title: ''
+			title: '',
+			msg: ''
 		};
 	}
 	componentDidMount() {
@@ -30,6 +31,8 @@ class Landing extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		console.log('nextProps', nextProps);
+		this.setState({ msg: nextProps.topics.msg });
+		setTimeout(() => this.setState({ msg: '' }), 5000);
 	}
 	toggle = () => this.setState({ modal: !this.state.modal });
 
@@ -55,10 +58,10 @@ class Landing extends Component {
 	};
 
 	render() {
-		console.log('this.props', this.props);
-		const { topics, msg, success } = this.props.topics;
+		const { topics, success } = this.props.topics,
+			{ msg } = this.state;
 		return (
-			<div className="mt-5 mx-3">
+			<div className="mt-3 mx-3">
 				{msg && (
 					<Row>
 						<Col>
