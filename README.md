@@ -1,4 +1,4 @@
-# Try Moovas Test - [React](https://reactjs.org/)
+# Try Moovaz Test - [React](https://reactjs.org/)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) ![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)
 
