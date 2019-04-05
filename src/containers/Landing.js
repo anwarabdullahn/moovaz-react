@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Topic from '../components/Topic';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Form } from 'reactstrap';
 import uuidv4 from 'uuid/v4';
+// import { getTopics, storeTopic, upVoteTopic, downVoteTopic} from '../actions/topicActions';
 
 class Landing extends Component {
 	constructor() {
