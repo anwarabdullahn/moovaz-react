@@ -30,7 +30,6 @@ class Landing extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log('nextProps', nextProps);
 		this.setState({ msg: nextProps.topics.msg });
 		setTimeout(() => this.setState({ msg: '' }), 5000);
 	}
@@ -42,10 +41,8 @@ class Landing extends Component {
 		e.preventDefault();
 		const { title } = this.state,
 			data = { id: uuidv4(), title, upvote: 0, downvote: 0 };
-
-		this.props.storeTopic(data);
+		title.length < 255 ? this.props.storeTopic(data) : this.setState({ msg: 'Max Title Length is 255' });
 		this.setState({ title: '' });
-		console.log('data', data);
 		this.toggle();
 	};
 

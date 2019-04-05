@@ -38,7 +38,7 @@ const Topic = (props) => {
 												style={{ position: 'relative', right: '50px' }}
 												onClick={() => props.upVoteHandle(topic.id)}
 											>
-												<i className="fas fa-2x fa-thumbs-up" style={{ color: 'green' }} />{' '}
+												<i className="fas fa-2x fa-thumbs-up" style={{ color: 'green' }} />
 												{topic.upvote}
 											</span>
 											<span
@@ -46,7 +46,7 @@ const Topic = (props) => {
 												style={{ position: 'relative', left: '50px' }}
 												onClick={() => props.downVoteHandle(topic.id)}
 											>
-												<i className="fas fa-2x fa-thumbs-down" style={{ color: 'red' }} />{' '}
+												<i className="fas fa-2x fa-thumbs-down" style={{ color: 'red' }} />
 												{topic.downvote}
 											</span>
 										</CardText>
