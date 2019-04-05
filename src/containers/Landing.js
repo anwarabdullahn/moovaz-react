@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import Topic from '../components/Topic';
-import { Button, Modal, ModalHeader, Row ModalBody, ModalFooter, Input, Form } from 'reactstrap';
+import {
+	Button,
+	Modal,
+	ModalHeader,
+	Row,
+	Col,
+	UncontrolledAlert,
+	ModalBody,
+	ModalFooter,
+	Input,
+	Form
+} from 'reactstrap';
 import uuidv4 from 'uuid/v4';
 import { getTopics, storeTopic, upVoteTopic, downVoteTopic } from '../actions/topicActions';
 import { connect } from 'react-redux';
@@ -45,12 +56,16 @@ class Landing extends Component {
 
 	render() {
 		console.log('this.props', this.props);
-		const { topics } = this.props.topics;
+		const { topics, msg, success } = this.props.topics;
 		return (
 			<div className="mt-5 mx-3">
-				<Row>
-
-				</Row>
+				{msg && (
+					<Row>
+						<Col>
+							<UncontrolledAlert color={success ? 'info' : 'danger'}>{msg}</UncontrolledAlert>
+						</Col>
+					</Row>
+				)}
 				{topics && (
 					<Topic
 						topics={topics.sort((b, a) => parseInt(a.upvote) - parseInt(b.upvote))}

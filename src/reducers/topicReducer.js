@@ -12,20 +12,21 @@ export default function(state = initialState, action) {
 		case GET_TOPICS:
 			return {
 				...state,
-				topics: action.payload,
-				msg: 'Get All Topics'
+				topics: action.payload
 			};
 		case STORE_TOPIC:
 			return {
 				...state,
 				topics: action.payload,
-				msg: 'New Topic Added'
+				msg: 'New Topic Added',
+				success: true
 			};
 		case UPVOTE_TOPIC:
 			return {
 				...state,
 				topics: action.payload,
-				msg: 'Up Vote Added'
+				msg: 'Up Vote Added',
+				success: true
 			};
 		case DOWNVOTE_TOPIC:
 			return {
