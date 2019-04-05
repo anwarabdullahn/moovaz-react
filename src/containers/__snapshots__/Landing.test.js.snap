@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing should render Landing correctly in "debug" mode 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`Landing should render correctly in "debug" mode 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
