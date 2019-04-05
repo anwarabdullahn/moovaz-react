@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Topic should render topic correctly in "debug" mode 1`] = `
+<Row
+  tag="div"
+>
+  <Col
+    className="my-3"
+    lg={3}
+    md={3}
+    sm={6}
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
+  >
+    <Card
+      style={
+        Object {
+          "backgroundColor": "#cecece",
+          "borderStyle": "dashed",
+          "borderWidth": "7px",
+          "color": "#fff",
+          "height": "210px",
+        }
+      }
+      tag="div"
+    >
+      <CardBody
+        className="d-flex justify-content-center align-items-center"
+        tag="div"
+      >
+        <h3>
+          Add New Topic 
+          <i
+            className="fas fa-plus"
+          />
+        </h3>
+      </CardBody>
+    </Card>
+  </Col>
+</Row>
+`;
