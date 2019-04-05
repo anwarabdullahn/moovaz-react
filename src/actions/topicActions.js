@@ -1,7 +1,7 @@
 import { GET_TOPICS, STORE_TOPIC, UPVOTE_TOPIC, DOWNVOTE_TOPIC } from './types';
-const topics = sessionStorage.getItem('topics') === null ? [] : JSON.parse(sessionStorage.getItem('topics'));
 
 export const getTopics = () => (dispatch) => {
+	const topics = sessionStorage.getItem('topics') === null ? [] : JSON.parse(sessionStorage.getItem('topics'));
 	dispatch({
 		type: GET_TOPICS,
 		payload: topics
@@ -9,6 +9,7 @@ export const getTopics = () => (dispatch) => {
 };
 
 export const storeTopic = (data) => (dispatch) => {
+	const topics = sessionStorage.getItem('topics') === null ? [] : JSON.parse(sessionStorage.getItem('topics'));
 	let addTopic = [ ...topics, data ];
 	sessionStorage.setItem('topics', JSON.stringify(addTopic));
 	dispatch({
@@ -18,25 +19,27 @@ export const storeTopic = (data) => (dispatch) => {
 };
 
 export const upVoteTopic = (id) => (dispatch) => {
+	const topics = sessionStorage.getItem('topics') === null ? [] : JSON.parse(sessionStorage.getItem('topics'));
 	const findTopic = topics.findIndex((topic) => topic.id === id),
 		upVoteTopic = topics.filter((topic) => topic.id === id);
 	upVoteTopic[0].upvote += 1;
 	topics.splice(findTopic, 1, upVoteTopic[0]);
 	sessionStorage.setItem('topics', JSON.stringify(topics));
 	dispatch({
-		type: GET_TOPICS,
+		type: UPVOTE_TOPIC,
 		payload: upVoteTopic[0]
 	});
 };
 
 export const downVoteTopic = (id) => (dispatch) => {
+	const topics = sessionStorage.getItem('topics') === null ? [] : JSON.parse(sessionStorage.getItem('topics'));
 	const findTopic = topics.findIndex((topic) => topic.id === id),
 		downVoteTopic = topics.filter((topic) => topic.id === id);
 	downVoteTopic[0].upvote += 1;
 	topics.splice(findTopic, 1, downVoteTopic[0]);
 	sessionStorage.setItem('topics', JSON.stringify(topics));
 	dispatch({
-		type: GET_TOPICS,
+		type: DOWNVOTE_TOPIC,
 		payload: downVoteTopic[0]
 	});
 };

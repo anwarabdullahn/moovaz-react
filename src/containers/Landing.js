@@ -2,30 +2,36 @@ import React, { Component } from 'react';
 import Topic from '../components/Topic';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Form } from 'reactstrap';
 import uuidv4 from 'uuid/v4';
-// import { getTopics, storeTopic, upVoteTopic, downVoteTopic} from '../actions/topicActions';
+import { getTopics, storeTopic, upVoteTopic, downVoteTopic } from '../actions/topicActions';
+import { connect } from 'react-redux';
 
 class Landing extends Component {
 	constructor() {
 		super();
 		this.state = {
-			topics: [
-				{ id: 1111, title: 'First Topic', upvote: 0, downvote: 0 },
-				{ id: 2222, title: 'Second Topic', upvote: 0, downvote: 0 }
-			],
 			modal: false,
 			title: ''
 		};
 	}
+	componentDidMount() {
+		this.props.getTopics();
+	}
 
+	componentWillReceiveProps(nextProps) {
+		console.log('nextProps', nextProps);
+		// this.props.getTopics();
+	}
 	toggle = () => this.setState({ modal: !this.state.modal });
 
 	changeHandle = (e) => this.setState({ [e.target.name]: e.target.value });
 
 	submitHandle = (e) => {
 		e.preventDefault();
-		const { title, topics } = this.state,
+		const { title } = this.state,
 			data = { id: uuidv4(), title, upvote: 0, downvote: 0 };
-		this.setState({ topics: [ ...topics, data ], title: '' });
+
+		this.props.storeTopic(data);
+		this.setState({ title: '' });
 		console.log('data', data);
 		this.toggle();
 	};
@@ -49,14 +55,18 @@ class Landing extends Component {
 	};
 
 	render() {
+		console.log('this.props', this.props);
+		const { topics } = this.props.topics;
 		return (
 			<div className="mt-5 mx-3">
-				<Topic
-					topics={this.state.topics.sort((b, a) => parseInt(a.upvote) - parseInt(b.upvote))}
-					addHandle={this.toggle}
-					upVoteHandle={this.upVoteHandle}
-					downVoteHandle={this.downVoteHandle}
-				/>
+				{topics && (
+					<Topic
+						topics={topics.sort((b, a) => parseInt(a.upvote) - parseInt(b.upvote))}
+						addHandle={this.toggle}
+						upVoteHandle={this.upVoteHandle}
+						downVoteHandle={this.downVoteHandle}
+					/>
+				)}
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
 					<Form onSubmit={this.submitHandle}>
 						<ModalHeader toggle={this.toggle}>Topic title</ModalHeader>
@@ -83,4 +93,15 @@ class Landing extends Component {
 	}
 }
 
-export default Landing;
+const actionCreators = {
+	getTopics,
+	storeTopic,
+	upVoteTopic,
+	downVoteTopic
+};
+
+const mapStateToProps = (state) => ({
+	topics: state.topics
+});
+
+export default connect(mapStateToProps, actionCreators)(Landing);
