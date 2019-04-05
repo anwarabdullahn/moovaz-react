@@ -13,9 +13,14 @@ Install the dependencies and devDependencies and start the server.
 ```sh
 $ git clone "this-repo"
 $ cd "this-repo"
-$ npm install || yarn install
-$ npm run start || yarn start
+$ npm install or yarn install
+$ npm run start or yarn start
 ```
+
+### How to Use
+ - Click on the card 'add new topic' for add new topic
+ - Click thumbs up green icon for up vote the topic
+ - Click thumbs down red icon for down vote the topic
 
 ### Tech
 
@@ -57,11 +62,6 @@ this-repo/
     store.js
 ````
 
-### How to Use
- - Click on the card 'add new topic' for add new topic
- - Click thumbs up green icon for up vote the topic
- - Click thumbs down red icon for down vote the topic
-
-License
+### License
 ----
 MIT
