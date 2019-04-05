@@ -2,8 +2,6 @@ import React from 'react';
 import { Card, CardText, CardBody, Row, Col } from 'reactstrap';
 
 const Topic = (props) => {
-	console.log('props', props);
-
 	const addTopic = (
 		<Col className="my-3" lg={3} md={3} sm={6} onClick={props.addHandle}>
 			<Card

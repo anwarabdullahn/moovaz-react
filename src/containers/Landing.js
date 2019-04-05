@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Topic from '../components/Topic';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Form } from 'reactstrap';
+import { Button, Modal, ModalHeader, Row ModalBody, ModalFooter, Input, Form } from 'reactstrap';
 import uuidv4 from 'uuid/v4';
 import { getTopics, storeTopic, upVoteTopic, downVoteTopic } from '../actions/topicActions';
 import { connect } from 'react-redux';
@@ -36,21 +36,11 @@ class Landing extends Component {
 	};
 
 	upVoteHandle = (id) => {
-		const { topics } = this.state,
-			findTopic = topics.findIndex((topic) => topic.id === id);
-		const upVoteTopic = topics.filter((topic) => topic.id === id);
-		upVoteTopic[0].upvote += 1;
-		topics.splice(findTopic, 1, upVoteTopic[0]);
-		this.setState({ topics: topics });
+		this.props.upVoteTopic(id);
 	};
 
 	downVoteHandle = (id) => {
-		const { topics } = this.state,
-			findTopic = topics.findIndex((topic) => topic.id === id);
-		const downVoteTopic = topics.filter((topic) => topic.id === id);
-		downVoteTopic[0].downvote += 1;
-		topics.splice(findTopic, 1, downVoteTopic[0]);
-		this.setState({ topics: topics });
+		this.props.downVoteTopic(id);
 	};
 
 	render() {
@@ -58,6 +48,9 @@ class Landing extends Component {
 		const { topics } = this.props.topics;
 		return (
 			<div className="mt-5 mx-3">
+				<Row>
+
+				</Row>
 				{topics && (
 					<Topic
 						topics={topics.sort((b, a) => parseInt(a.upvote) - parseInt(b.upvote))}

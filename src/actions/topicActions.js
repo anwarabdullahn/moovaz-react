@@ -35,7 +35,7 @@ export const downVoteTopic = (id) => (dispatch) => {
 	const topics = sessionStorage.getItem('topics') === null ? [] : JSON.parse(sessionStorage.getItem('topics'));
 	const findTopic = topics.findIndex((topic) => topic.id === id),
 		downVoteTopic = topics.filter((topic) => topic.id === id);
-	downVoteTopic[0].upvote += 1;
+	downVoteTopic[0].downvote += 1;
 	topics.splice(findTopic, 1, downVoteTopic[0]);
 	sessionStorage.setItem('topics', JSON.stringify(topics));
 	dispatch({
